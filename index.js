@@ -1,8 +1,12 @@
 const express=require('express')
 const app = express();
-app.get('/', (req,res)=>{
-    res.send('<h1>Tervetullo Vantaalle!</h1>')
-});
+const path=require('path')
+// app.get('/', (req,res)=>{
+//     res.send('<h1>Tervetullo Vantaalle!</h1>')
+// });
+
+//sendig static folder
+app.use(express.static(path.join(__dirname,'dist')))
 
 const PORT=process.env.PORT || 5000;
 
