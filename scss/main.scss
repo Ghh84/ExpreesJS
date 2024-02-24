@@ -1,0 +1,203 @@
+@import 'config';
+@import 'menu';
+@import './_pageStyle/service';
+@import './_pageStyle/contact';
+@import './_pageStyle/gallery';
+@import './_pageStyle/login';
+@import './_pageStyle/personal';
+@import './_pageStyle/work';
+
+*{
+    box-sizing: border-box;
+}
+body {
+    @include background();
+    background: $primary-color;
+    color:set-text-color($primary-color);
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+}
+
+p{
+    text-align: justify;
+    text-justify: inter-word;
+}
+h1,h2,h3{
+    margin: 0;
+    font-weight: 300;
+    &.lg-heading{
+        font-size: 4rem;
+        text-align: center;
+    }
+    &.sm-heading{
+        margin-bottom: 2rem;
+        padding: 0.2rem 1rem;
+        background: rgba(lighten($primary-color,2),0.5);
+    }
+    &.text{
+        color: #444;
+    }
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+header{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+}
+.text-secondary{
+    color: $secondary-color;
+}
+main {
+    padding: 4rem;
+    min-height: calc(100vh - 65px);
+  
+    .icons {
+      margin-top: 1rem;
+  
+      a {
+        padding: 0.4rem;
+  
+        &:hover {
+          color: $secondary-color;
+        @include easeOut
+        }
+      }
+    }}
+
+.home-grid{
+    display: grid;
+    gap: 30px;
+    grid-template-areas: 
+    'bioimg bio bio'
+    ;
+    grid-template-columns: repeat(3,1fr);
+    .bio-image{
+        grid-area: bioimg;
+        margin: auto;
+        border-radius: 50%;
+        border: $secondary-color 3px solid;
+    }
+    .bio{
+        grid-area: bio;
+        font-size: 1.5rem;
+    }
+}
+.about-info{
+    display: grid;
+    gap: 30px;
+    grid-template-areas: 
+    'bioimg bio bio''
+    job1 job2 job3'
+    ;
+    grid-template-columns: repeat(3,1fr);
+    .bio-image{
+        grid-area: bioimg;
+        margin: auto;
+        border-radius: 50%;
+        border: $secondary-color 3px solid;
+    }
+    .bio{
+        grid-area: bio;
+        font-size: 1.5rem;
+    }
+    .job-1{
+        grid-area: job1;
+    }
+    .job-2{
+        grid-area: job2;
+    }
+    .job-3{
+        grid-area: job3;
+    }
+    .job{
+        background: lighten($primary-color, 5);
+        padding: 0.5rem;
+        border-bottom: $secondary-color 5px solid;
+    }
+}
+
+// Button style
+.btn{
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 0;
+    margin-bottom: 0.3rem;
+    &:hover{
+        background: $secondary-color;
+        color: set-text-color($secondary-color);
+    }
+}
+.btn-dark{
+    @extend .btn;
+    background: darken($primary-color, 50);
+    color: #fff;
+}
+.btn-light{
+    @extend .btn;
+    background: lighten($primary-color, 50);
+    color: #333;
+}
+// form design style
+.form{
+    align-items: center;
+    align-content: center;
+    background-image: url(../dist/img/project/project1.jpg);
+    padding: 20px 50px;
+    color:rgb(25, 26, 25);
+    font-size: 20px;
+    .btn-submit{
+        background-color: #450ce4;
+        color: white;
+        margin-top: 20px;
+        padding: 10px 20px;
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+        &:hover {
+            background-color: #45a049;
+          }
+    }   
+}
+//main footer
+#main-footer{
+    text-align: center;
+    align-items: center;
+    background: darken($primary-color,10);
+    height: 40px;
+    .icons {  
+        a {
+          padding: 1rem;
+    
+          &:hover {
+            color: $secondary-color;
+          @include easeOut
+          }
+        }
+      }
+      width: 100%;
+  overflow: hidden; // Hide the overflow content
+  position: relative;
+
+  .icons {
+    display: inline-block;
+    animation: moveLeft 10s linear infinite; // Set the animation properties
+  }
+  
+  @keyframes moveLeft {
+    0% {
+      transform: translateX(0); // Start from original position
+    }
+    100% {
+      transform: translateX(-150%); // Move left by 100% of element width
+    }
+  }
+}

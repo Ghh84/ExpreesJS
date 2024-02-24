@@ -1,0 +1,28 @@
+// services
+#services{
+    display: grid;
+    gap: 30px;
+    grid-template-areas: 
+    'text img'
+    ;
+    grid-template-columns: repeat(2,1fr);
+    .left-side-content{
+        grid-area: text;
+        margin: auto;
+        border-radius: 50%;
+        border: $secondary-color 3px solid;
+    }
+    .right-side-content{
+        grid-area: img;
+        font-size: 1.5rem;
+    }
+    img{
+        width: 100%;
+        border: 3px #fff solid;
+        &:hover{
+            opacity: 0.5;
+            border-color: $secondary-color;
+            @include easeOut
+        }
+    }
+}

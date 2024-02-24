@@ -1,0 +1,40 @@
+// personal page style
+.slider-container {
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    flex-direction: column; /* Added to stack children vertically */
+    align-items: center; /* Added to center align children horizontally */
+}
+.slider {
+    display: flex;
+    transition: transform 0.5s ease;
+    overflow: hidden; /* Ensure images don't overflow horizontally */
+    max-width: 80%;
+    max-height: 70%;
+    border: 2px solid #4608f0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.slider img #imageContainer {
+    
+    &:hover{
+        opacity: 0.5;
+        border-color: $secondary-color;
+        @include easeOut
+    }
+}
+
+.buttons {
+    left: 0;
+    right: 0; /* Center buttons horizontally */
+    margin-top: 500px; /* Added space between images and buttons */
+}
+.prev, .next {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
