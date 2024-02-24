@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
+  "scripts": {    
+    "sass": "node-sass -w scss/ -o dist/css/ --recursive",
     "test": "node index",
     "dev": "node nodemon"
   },
@@ -11,7 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "node-sass": "^9.0.0"
   },
   "devDependencies": {
     "nodeman": "^1.1.2",
