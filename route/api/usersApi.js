@@ -8,7 +8,7 @@ const idFilter = req => user => user.id === parseInt(req.params.id);
 // Gets All users
 router.get('/', (req, res) => res.json(users));
 
-// Get Single User
+// Get Single user
 router.get('/:id', (req, res) => {
   const found = users.some(idFilter(req));
 
@@ -19,21 +19,53 @@ router.get('/:id', (req, res) => {
   }
 });
 
-//cretate users
+// Create user
 router.post('/', (req, res) => {
-    const newUser = {
-      ...req.body,
-      id: uuid.v4(),
-      status: 'active'
-    };
-  
-    if (!newUser.name || !newUser.email) {
-      return res.status(400).json({ msg: 'Please include a name and email' });
-    }
-  
-    users.push(newUser);
-    res.json(users);
-    // res.redirect('/');
-  });
+  const newUser = {
+    ...req.body,
+    id: uuid.v4(),
+    status: 'active'
+  };
 
-module.exports=router;
+  if (!newUser.name || !newUser.email) {
+    return res.status(400).json({ msg: 'Please include a name and email' });
+  }
+
+  users.push(newUser);
+  res.json(users);
+  // res.redirect('/');
+});
+
+// Update User
+router.put('/:id', (req, res) => {
+  const found = users.some(idFilter(req));
+
+  if (found) {
+    users.forEach((user, i) => {
+      if (idFilter(req)(user)) {
+
+        const updUser = {...user, ...req.body};
+        users[i] = updUser
+        res.json({ msg: 'User updated', updUser });
+      }
+    });
+  } else {
+    res.status(400).json({ msg: `No user with the id of ${req.params.id}` });
+  }
+});
+
+// Delete user
+router.delete('/:id', (req, res) => {
+  const found = users.some(idFilter(req));
+
+  if (found) {
+    res.json({
+      msg: 'User deleted',
+      users: users.filter(user => !idFilter(req)(user))
+    });
+  } else {
+    res.status(400).json({ msg: `No user with the id of ${req.params.id}` });
+  }
+});
+
+module.exports = router;
