@@ -32,8 +32,8 @@ router.post('/', (req, res) => {
   }
 
   users.push(newUser);
-  res.json(users);
-  // res.redirect('/');
+ // res.json(users);
+   res.redirect('/');
 });
 
 // Update User
